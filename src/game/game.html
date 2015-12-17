@@ -1,8 +1,35 @@
-<button ng-click="gameCtrl.restartGame()">Restart Game</button>
-<div ng-if="gameCtrl.gameFinished">You win!</div>
-
 <div class="container">
-    <cg-card ng-repeat="card in gameCtrl.cards track by card.id"
-             card="card"
-             ng-click="gameCtrl.onClickCallback(card.id)"></cg-card>
+
+    <form class="form">
+        <div class="form-group">
+            <label>Please, select size of the game</label>
+            <select class="form-control"
+                    ng-model="gameCtrl.selectedSize"
+                    ng-change="gameCtrl.restartGame()"
+                    ng-options="item as  item.text for item in gameCtrl.availableSizeGame">
+            </select>
+
+            <p>{{gameCtrl.gameFinished?'You win!':''}}</p>
+        </div>
+        <div class="form-group">
+            <button type="button" ng-click="gameCtrl.restartGame()" class="btn btn-danger">Restart Game</button>
+        </div>
+    </form>
+
+
+    <div class="" ng-if="gameCtrl.selectedSize">
+        <div class="row"
+             ng-repeat="i in gameCtrl.cards |limitTo:gameCtrl.selectedSize.size"
+             ng-init="rowIndex = $index">
+
+            <div ng-repeat="j in gameCtrl.cards |limitTo:gameCtrl.selectedSize.size"
+                 ng-init="colIndex = $index"
+                 class="col-xs-{{12/gameCtrl.selectedSize.size}} nopadding">
+
+                <cg-card card="gameCtrl.cards[(rowIndex*gameCtrl.selectedSize.size)+colIndex]"
+                         ng-click="gameCtrl.onClickCallback(gameCtrl.cards[(rowIndex*gameCtrl.selectedSize.size)+colIndex].id)"></cg-card>
+
+            </div>
+        </div>
+    </div>
 </div>

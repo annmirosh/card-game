@@ -11,11 +11,19 @@
 
         restartGame();
 
+        this.availableSizeGame = [
+            {size: 2, text: '2x2'},
+            {size: 4, text: '4x4'}
+        ];
+
         this.onClickCallback = onClickCallback;
         this.restartGame = restartGame;
 
         function restartGame() {
-            me.cards = gameService.mixCards();
+            if (me.selectedSize) {
+                me.cards = gameService.mixCards(me.selectedSize.size);
+            }
+
             me.gameFinished = false;
         }
 

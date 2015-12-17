@@ -5,9 +5,14 @@
         .service('gameService', GameService);
 
     var defaultImageArray = [
-            'images/cat1.jpg',
-            'images/cat2.jpg',
-            'images/cat3.jpg'
+            'images/card1.png',
+            'images/card2.png',
+            'images/card3.png',
+            'images/card4.png',
+            'images/card5.png',
+            'images/card6.png',
+            'images/card7.png',
+            'images/card8.png'
         ],
         backImage = 'images/back-side.jpg';
 
@@ -15,9 +20,9 @@
 
         this.mixCards = mixCards;
 
-        function mixCards() {
+        function mixCards(count) {
             var
-                imageArray = defaultImageArray,
+                imageArray = _.shuffle(defaultImageArray).slice(0, count * count / 2),
                 cardCount = imageArray.length * 2,
                 mixedArray = _.shuffle(_.range(cardCount)),
                 cards = [];

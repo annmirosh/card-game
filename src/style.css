@@ -1,0 +1,15 @@
+body {
+    padding: 70px;
+}
+
+.imageCard {
+    width: 110px;
+    height: 140px;
+    margin: 5px;
+    border-radius: 5px;
+}
+
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
