@@ -3,7 +3,7 @@ var
     isTravis = process.env.TRAVIS || false,
     Server = require('karma').Server;
 
-gulp.task('unitTests', function (done) {
+gulp.task('test', function (done) {
     new Server({
         configFile: __dirname + '/../karma.conf.js',
         singleRun: isTravis,

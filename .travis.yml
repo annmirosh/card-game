@@ -5,7 +5,7 @@ node_js:
 before_script:
 - npm install -g bower
 - bower install
-- gulp
+- gulp test
 
 notifications:
   on_success: change
