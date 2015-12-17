@@ -28,7 +28,7 @@
                         {
                             id: mixedArray[ind],
                             image: card,
-                            backImage:backImage,
+                            backImage: backImage,
                             isVisible: false
                         }
                     );

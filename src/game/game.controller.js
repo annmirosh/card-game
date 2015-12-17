@@ -7,50 +7,57 @@
     GameController.$inject = ['gameService', '$timeout'];
 
     function GameController(gameService, $timeout) {
+        var me = this;
         this.cards = gameService.mixCards();
-        this.openCards = [];
-
         this.onClickCallback = onClickCallback;
 
         function onClickCallback(i) {
             var
-                tempCards = this.cards,
-                currentCard = tempCards[i],
+                currentCard = this.cards[i],
                 firstCard,
                 secondCard,
-                me = this;
+                openCards;
 
-            if (currentCard.isResolved) {
+            if (currentCard.isResolved || areTwoCardsOpenedAndNotResolved()) {
                 return;
             }
 
             currentCard.isVisible = true;
 
-            this.openCards.push(currentCard);
-
-            if (this.openCards.length === 2) {
-                firstCard = this.openCards[0];
-                secondCard = this.openCards[1];
+            if (areTwoCardsOpenedAndNotResolved()) {
+                openCards = getOpenAndNotResolvedCards();
+                firstCard = openCards[0];
+                secondCard = openCards[1];
 
                 if (firstCard.image !== secondCard.image) {
                     $timeout(function () {
-                        tempCards.forEach(function (card) {
+                        me.cards.forEach(function (card) {
                             if (!card.isResolved) {
                                 card.isVisible = false;
                             }
                         });
-                        me.cards = tempCards;
                     }, 500);
                 } else {
-                    _.filter(tempCards, function (card) {
-                        return card.id === firstCard.id || card.id === secondCard.id;
-                    }).forEach(function (card) {
-                        card.isResolved = true;
-                    });
+                    _.filter(this.cards, function (card) {
+                            return card.id === firstCard.id || card.id === secondCard.id;
+                        })
+                        .forEach(function (card) {
+                            card.isResolved = true;
+                        });
                 }
-                this.openCards = [];
             }
-            this.cards = tempCards;
+        }
+
+        function getOpenAndNotResolvedCards() {
+            return _.filter(me.cards, openAndNotResolvedCondition);
+        }
+
+        function areTwoCardsOpenedAndNotResolved() {
+            return _.filter(me.cards, openAndNotResolvedCondition).length === 2;
+        }
+
+        function openAndNotResolvedCondition(card) {
+            return card.isVisible && !card.isResolved;
         }
     }
 })();
