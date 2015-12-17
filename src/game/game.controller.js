@@ -4,13 +4,15 @@
         .module('cardGameApp')
         .controller('GameController', GameController);
 
-    GameController.$inject = ['GameService', '$timeout'];
+    GameController.$inject = ['gameService', '$timeout'];
 
-    function GameController(GameService, $timeout) {
-        this.cards = GameService.mixCards();
+    function GameController(gameService, $timeout) {
+        this.cards = gameService.mixCards();
         this.openCards = [];
 
-        this.onClickCallback = function (i) {
+        this.onClickCallback = onClickCallback;
+
+        function onClickCallback(i) {
             var
                 tempCards = this.cards,
                 currentCard = tempCards[i],

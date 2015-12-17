@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('cardGameApp')
-        .service('GameService', GameService);
+        .service('gameService', GameService);
 
     var defaultImageArray = [
             'images/cat1.jpg',
