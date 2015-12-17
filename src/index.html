@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Card Game</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
+    <!-- endbower -->
+    <link rel="stylesheet" href="../style.css"/>
+</head>
+<body ng-app="cardGameApp">
+
+<div ui-view></div>
+
+<script src="../bower_components/angular/angular.min.js"></script>
+<script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="../bower_components/angular-underscore/angular-underscore.js"></script>
+<script src="app.js"></script>
+<script src="game/game.controller.js"></script>
+<script src="game/game.service.js"></script>
+<script src="card/card.directive.js"></script>
+
+</body>
+</html>

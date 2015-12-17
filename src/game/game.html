@@ -1,0 +1,5 @@
+<div class="container">
+    <cg-card ng-repeat="card in gameCtrl.cards track by card.id"
+             card="card"
+             ng-click="gameCtrl.onClickCallback(card.id)"></cg-card>
+</div>
