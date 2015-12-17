@@ -1,3 +1,6 @@
+<button ng-click="gameCtrl.restartGame()">Restart Game</button>
+<div ng-if="gameCtrl.gameFinished">You win!</div>
+
 <div class="container">
     <cg-card ng-repeat="card in gameCtrl.cards track by card.id"
              card="card"

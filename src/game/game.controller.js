@@ -8,8 +8,16 @@
 
     function GameController(gameService, $timeout) {
         var me = this;
-        this.cards = gameService.mixCards();
+
+        restartGame();
+
         this.onClickCallback = onClickCallback;
+        this.restartGame = restartGame;
+
+        function restartGame() {
+            me.cards = gameService.mixCards();
+            me.gameFinished = false;
+        }
 
         function onClickCallback(i) {
             var
@@ -46,6 +54,8 @@
                         });
                 }
             }
+
+            me.gameFinished = getCountOfResolvedCards() === me.cards.length;
         }
 
         function getOpenAndNotResolvedCards() {
@@ -56,8 +66,16 @@
             return _.filter(me.cards, openAndNotResolvedCondition).length === 2;
         }
 
+        function getCountOfResolvedCards() {
+            return _.filter(me.cards, isCardResolved).length;
+        }
+
         function openAndNotResolvedCondition(card) {
             return card.isVisible && !card.isResolved;
+        }
+
+        function isCardResolved(card) {
+            return card.isResolved;
         }
     }
 })();
