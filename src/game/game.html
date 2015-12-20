@@ -3,7 +3,9 @@
     <form class="form">
         <div class="form-group">
             <label>Please, select a size of the deck</label>
-            <select class="form-control"
+            <select
+                    id="sizeSelector"
+                    class="form-control"
                     ng-model="gameCtrl.selectedSize"
                     ng-change="gameCtrl.restartGame()"
                     ng-options="item as  item.text for item in gameCtrl.availableSizeGame">
@@ -12,13 +14,13 @@
 
         </div>
         <div class="form-group">
-            <button type="button" ng-click="gameCtrl.restartGame()" class="btn btn-danger">Restart Game</button>
+            <button id="resetGame" type="button" ng-click="gameCtrl.restartGame()" class="btn btn-danger">Restart Game</button>
             <b>{{gameCtrl.gameFinished?'You win!':''}}</b>
         </div>
     </form>
 
 
-    <div class="text-center" ng-if="gameCtrl.selectedSize">
+    <div id="deck" class="text-center" ng-if="gameCtrl.selectedSize">
         <div class="row"
              ng-repeat="i in gameCtrl.cards |limitTo:gameCtrl.selectedSize.size"
              ng-init="rowIndex = $index">

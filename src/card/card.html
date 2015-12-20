@@ -1,3 +1,5 @@
-<img data-ng-src="{{card.isVisible ? card.image :card.backImage }}"
-     class="imageCard"
-     ng-click="onClick(card.id)">
+<img
+        id="card{{card.id}}"
+        data-ng-src="{{card.isVisible ? card.image :card.backImage }}"
+        class="imageCard"
+        ng-click="onClick(card.id)">
