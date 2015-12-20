@@ -5,12 +5,13 @@
 
 Simple implementation of the game 'Find similar picture'.
 
-Notes:
+    
+To run tests:
 
-1) To run tests execute:
     $ gulp test
+    
+To run tests:
 
-2) To run e2e test execute:
     $ npm run install
     $ gulp connect
     $ gulp protractor
