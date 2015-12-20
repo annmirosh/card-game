@@ -9,7 +9,7 @@ module.exports = function (config) {
         files: bowerFiles.concat([
             'node_modules/sinon-chai/sinon.js',
             'src/**/*.js',
-            'test/**/*.spec.js'
+            'src/**/*.spec.js'
         ]),
         plugins: [
             'karma-mocha',

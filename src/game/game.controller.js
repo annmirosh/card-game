@@ -71,7 +71,7 @@
         }
 
         function areTwoCardsOpenedAndNotResolved() {
-            return _.filter(me.cards, openAndNotResolvedCondition).length === 2;
+            return getOpenAndNotResolvedCards().length === 2;
         }
 
         function getCountOfResolvedCards() {

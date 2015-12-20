@@ -18,7 +18,7 @@
         });
 
         it('card should contain predefined properties', function () {
-            var card = gameService.mixCards()[0];
+            var card = gameService.mixCards(2)[0];
             expect(card.id).to.exist;
             expect(card.image).to.exist;
             expect(card.backImage).to.exist;
