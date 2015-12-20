@@ -6,6 +6,7 @@ module.exports = function (config) {
     config.set({
         basePath: '',
         frameworks: ['mocha', 'chai', 'sinon-chai'],
+        exclude: ['src/**/*.e2e.js'],
         files: bowerFiles.concat([
             'node_modules/sinon-chai/sinon.js',
             'src/**/*.js',
