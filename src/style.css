@@ -1,5 +1,6 @@
 body {
     padding: 30px;
+    min-width:700px;
 }
 
 .imageCard {
