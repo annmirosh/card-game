@@ -1,5 +1,5 @@
 body {
-    padding: 70px;
+    padding: 30px;
 }
 
 .imageCard {
@@ -12,4 +12,8 @@ body {
 .nopadding {
     padding: 0 !important;
     margin: 0 !important;
+}
+
+.card-holder{
+    display: inline-block;
 }
